@@ -8,3 +8,6 @@ Attempt to design, flag of India in React Native 😃!
 
 ### flag guidelines
 - [link here](https://en.wikipedia.org/wiki/Flag_of_India)
+
+### React Native (transform properties)
+- [link here](https://reactnative.dev/docs/transforms)
