@@ -7,105 +7,117 @@
  */
 
 import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const Spoke = ({index}) => {
+  let deg;
+  const DISTANCE = 15;
+  switch (index) {
+    case '0':
+      deg = `${DISTANCE * index}deg`;
+      break;
+    case '1':
+      deg = `${DISTANCE * index}deg`;
+      break;
+    case '2':
+      deg = `${DISTANCE * index}deg`;
+      break;
+    case '3':
+      deg = `${DISTANCE * index}deg`;
+      break;
+    case '4':
+      deg = `${DISTANCE * index}deg`;
+      break;
+    case '5':
+      deg = `${DISTANCE * index}deg`;
+      break;
+    case '6':
+      deg = `${DISTANCE * index}deg`;
+      break;
+    case '7':
+      deg = `${DISTANCE * index}deg`;
+      break;
+    case '8':
+      deg = `${DISTANCE * index}deg`;
+      break;
+    case '9':
+      deg = `${DISTANCE * index}deg`;
+      break;
+    case '10':
+      deg = `${DISTANCE * index}deg`;
+      break;
+    case '11':
+      deg = `${DISTANCE * index}deg`;
+      break;
+    default:
+      deg = '0deg';
+  }
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const position = {
+    position: 'absolute',
+    transform: [{rotate: deg}],
+  };
+  return <View style={[styles.spoke, position]} />;
+};
+
+const Center = () => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style={styles.center}>
+      <Spoke index="0" />
+      <Spoke index="1" />
+      <Spoke index="2" />
+      <Spoke index="3" />
+      <Spoke index="4" />
+      <Spoke index="5" />
+      <Spoke index="6" />
+      <Spoke index="7" />
+      <Spoke index="8" />
+      <Spoke index="9" />
+      <Spoke index="10" />
+      <Spoke index="11" />
     </View>
   );
 };
 
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
+const App = () => {
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <View style={StyleSheet.flatten([styles.flagPart, styles.saffron])} />
+      <View style={StyleSheet.flatten([styles.flagPart, styles.white])}>
+        <Center />
+      </View>
+      <View style={StyleSheet.flatten([styles.flagPart, styles.green])} />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    // paddingT`op: StatusBar.currentHeight,
+    backgroundColor: '#fff',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  flagPart: {
+    flex: 0.3333,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  spoke: {
+    height: 180,
+    width: 10,
+    backgroundColor: '#000080',
   },
-  highlight: {
-    fontWeight: '700',
+  saffron: {
+    backgroundColor: '#FF9933',
+  },
+  white: {
+    backgroundColor: '#FFFFFF',
+  },
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+  },
+  green: {
+    backgroundColor: '#138808',
   },
 });
 
